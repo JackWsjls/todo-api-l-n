@@ -16,9 +16,9 @@
   },
   "production": {
     "username": "root",
-    "password": null,
+    "password": "zongfanshi.1",
     "database": "database_production",
-    "host": "127.0.0.1",
+    "host": "123.56.185.180",
     "dialect": "mysql"
   }
 }
