@@ -16,7 +16,7 @@
   },
   "production": {
     "username": "root",
-    "password": "zongfanshi.1",
+    "password": "Zongfanshi.1",
     "database": "database_production",
     "host": "123.56.185.180",
     "dialect": "mysql"
