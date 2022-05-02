@@ -1,8 +1,10 @@
-pm2常用命令记录
+# pm2常用命令记录
 
 $ pm2 start app.js # 启动app.js应用程序
 $ pm2 start app.js -i 4        # cluster mode 模式启动4个app.js的应用实例
-# 4个应用程序会自动进行负载均衡
+
+## 4个应用程序会自动进行负载均衡
+
 $ pm2 start app.js --name="api" # 启动应用程序并命名为 "api"
 $ pm2 start app.js --watch      # 当文件变化时自动重启应用
 $ pm2 start script.sh          # 启动 bash 脚本
@@ -26,4 +28,4 @@ $ pm2 save                      # 保存当前应用列表
 $ pm2 resurrect                # 重新加载保存的应用列表
 $ pm2 update                    # Save processes, kill PM2 and restore processes
 $ pm2 generate                  # Generate a sample json configuration file
-链接：https://www.jianshu.com/p/9cab8f7020c1
+链接：<https://www.jianshu.com/p/9cab8f7020c1>
