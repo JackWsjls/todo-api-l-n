@@ -23,6 +23,8 @@ Nodejs全栈入门
 
 ## API里面具体使用ORM模型
 
+ORM（Object Relational Mapping）
+
 ## 项目的发布和运维
 
 ### 安装pm2
