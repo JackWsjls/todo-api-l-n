@@ -9,6 +9,9 @@ Nodejs全栈入门
 `npm i sequelize-cli nodemon -S`
 `npm i body-parser -S`
 
+<!-- 合并为一个是 -->
+`npm install express mysql2 sequelize sequelize-cli nodemon body-parser -s`
+
 ## 数据库的初始化
 
 1、创建一个数据库
@@ -17,9 +20,9 @@ Nodejs全栈入门
 3、生成模型文件
   1、migrate 文件
   2、modal 文件
-  ` npx sequelize model:generate --name Todo --attributes name:string,deadline:date,content:string,status:integer `
+  `npx sequelize model:generate --name Todo --attributes name:string,deadline:date,content:string,status:integer`
 4、 持久化，模型对应的【数据库表】
-  ` npx sequelize db:migrate `
+  `npx sequelize db:migrate`
 
 ## API里面具体使用ORM模型
 
