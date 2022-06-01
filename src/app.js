@@ -137,7 +137,11 @@ app.get("/list/:status/:page/:pageSize", async (req, res, next) => {
   let list = await models.Todo.findAndCountAll({
     where,
     offset,
-    limit
+    limit,
+    order: [
+      ['deadline', 'DESC']
+      // ['deadline'] // 正序
+    ]
   });
   res.json({
     list,
