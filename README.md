@@ -44,3 +44,5 @@ ORM（Object Relational Mapping）
 `pm2 start ecosystem.config.js`
 `pm2 list`
 `pm2 restart 0`
+
+### self-management项目开发
