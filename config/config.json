@@ -19,6 +19,7 @@
     "password": "Zongfanshi.1",
     "database": "database_production",
     "host": "123.56.185.180",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "timezone": "+08:00"
   }
 }
