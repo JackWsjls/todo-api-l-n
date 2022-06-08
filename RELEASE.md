@@ -56,4 +56,9 @@ location / {
 const ip =  req.headers['x-forwarded-for'] 　||　req.headers['x-real-ip']
 ```
 
+### node.js使用百度地图api根据ip获取用户ip所在地
+
+<http://blog.lhzzs.top/portal/blogs/essay/61246b36bdade344f8154231>
+
+示例访问
 <http://api.map.baidu.com/location/ip?ak=6SzbKrxC5vwupOECpO4AhL8sPDyWf2Xa&ip=222.128.5.203&coor=gcj02>
