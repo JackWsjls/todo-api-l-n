@@ -19,6 +19,9 @@ module.exports = {
       },
       status: {
         type: Sequelize.INTEGER
+      },
+      ip: {
+        type: Sequelize.STRING
       }
     });
   },

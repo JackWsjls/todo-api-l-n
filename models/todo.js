@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     deadline: DataTypes.DATE,
     content: DataTypes.STRING,
+    ip: DataTypes.STRING,
     status: {
       type: DataTypes.INTEGER,
       defaultValue: 1

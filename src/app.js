@@ -23,5 +23,5 @@ app.use((err, req, res, next) => {
 })
 
 app.listen("2000", function () {
-  console.log("脚本成功")
+  console.log("脚本成功-http://localhost:2000/*")
 })

@@ -20,7 +20,7 @@ Nodejs全栈入门
 3、生成模型文件
   1、migrate 文件
   2、modal 文件
-  `npx sequelize model:generate --name Todo --attributes name:string,deadline:date,content:string,status:integer`
+  `npx sequelize model:generate --name Todo --attributes name:string,deadline:date,content:string,ip:string,status:integer`
 4、 持久化，模型对应的【数据库表】
   `npx sequelize db:migrate`
 
