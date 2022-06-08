@@ -168,6 +168,7 @@ module.exports = (app, models) => {
    * @param pageSize 每页展示数量
    */
   app.get("/list/:status/:page/:pageSize", async (req, res, next) => {
+    const visitor_ip = getClientIp(req)
     console.log(req.params)
     let { status, page, pageSize } = req.params;
     let limit = Number(pageSize);
@@ -190,6 +191,7 @@ module.exports = (app, models) => {
     });
     res.json({
       list,
+      visitor_ip,
       message: "分页查询成功"
     })
   })
