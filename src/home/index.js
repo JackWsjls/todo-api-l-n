@@ -1,3 +1,4 @@
+const axios = require("axios")
 module.exports = (app, models) => {
   // 获取用户IP
   const getIPAdress = () => {
@@ -13,21 +14,45 @@ module.exports = (app, models) => {
       }
     }
   }
+  //通过req的hearers来获取客户端ip
+  const getIp = (req) => {
+    var ip = req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddres || req.socket.remoteAddress || '';
+    if(ip.split(',').length>0){
+      ip = ip.split(',')[0];
+    }
+    return ip;
+  };
+  function getClientIp(req) {
+    return req.headers['x-forwarded-for'] ||
+        req.connection.remoteAddress ||
+        req.socket.remoteAddress ||
+        req.connection.socket.remoteAddress;
+  };
   // ———————————————完成增删改查功能———————————————————
   /**
    * @description 创建数据
    */
   app.post("/create", async (req, res, next) => {
-    const visitor_ip = getIPAdress()
+    const visitor_ip = getClientIp(req)
+    let address_detail = null
+    let point = null
+    if (visitor_ip.length > 5) {
+      await axios.get(`http://api.map.baidu.com/location/ip?ak=6SzbKrxC5vwupOECpO4AhL8sPDyWf2Xa&ip=${visitor_ip}&coor=gcj02`).then(res => {
+        address_detail = res.data.content.address_detail;
+        point = res.data.content.point
+      })
+      console.log(address_detail, point)
+    }
     let { name, deadline, content } = req.body;
     try {
       // 数据持久化到数据库
-      console.log(visitor_ip)
       let todo = await models.Todo.create({
         name,
         deadline,
         content,
-        ip: visitor_ip
+        ip: visitor_ip,
+        address_detail: JSON.stringify(address_detail),
+        point: JSON.stringify(point)
       })
       res.json({
         todo,
@@ -50,7 +75,7 @@ module.exports = (app, models) => {
           id
         }
       })
-      const visitor_ip = getIPAdress()
+      const visitor_ip = getClientIp(req)
       if (todo && status != todo.status) {
         todo = await todo.update({
           status,
@@ -99,7 +124,6 @@ module.exports = (app, models) => {
    * @description 编辑数据
    */
   app.post("/update", async (req, res, next) => {
-    getIPAdress()
     try {
     let { name, deadline, content, id } = req.body;
         // 数据持久化到数据库
@@ -109,12 +133,23 @@ module.exports = (app, models) => {
         }
       })
     if (todo) {
-      const visitor_ip = getIPAdress()
+      const visitor_ip = getClientIp(req)
+      let address_detail = null
+      let point = null
+      if (visitor_ip.length > 5) {
+        await axios.get(`http://api.map.baidu.com/location/ip?ak=6SzbKrxC5vwupOECpO4AhL8sPDyWf2Xa&ip=${visitor_ip}&coor=gcj02`).then(res => {
+          address_detail = res.data.content.address_detail;
+          point = res.data.content.point
+        })
+        console.log(address_detail, point)
+      }
       todo = await todo.update({
         name,
         deadline,
         content,
-        ip: visitor_ip
+        ip: visitor_ip,
+        address_detail: JSON.stringify(address_detail),
+        point: JSON.stringify(point)
       })
     }
       res.json({

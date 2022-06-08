@@ -22,6 +22,12 @@ module.exports = {
       },
       ip: {
         type: Sequelize.STRING
+      },
+      address_detail: {
+        type: Sequelize.STRING
+      },
+      point: {
+        type: Sequelize.STRING
       }
     });
   },

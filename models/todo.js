@@ -16,6 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     deadline: DataTypes.DATE,
     content: DataTypes.STRING,
     ip: DataTypes.STRING,
+    address_detail: DataTypes.STRING,
+    point: DataTypes.STRING,
     status: {
       type: DataTypes.INTEGER,
       defaultValue: 1

@@ -31,3 +31,29 @@
   }
 }
 ```
+
+## 问题
+
+### nodejs+nginx获取真实ip,解决获取ip为127.0.0.1的问题
+
+<https://blog.csdn.net/lhz_19/article/details/120372640>
+访问互联网上的服务时，大多数时，客户端并不是直接访问到服务端的，而是客户端首先请求到反向代理，反向代理再转发到服务端实现服务访问，通过反向代理实现路由/负载均衡等策略。这样在服务端拿到的客户端IP将是反向代理IP，而不是真实客户端IP。我的项目服务器是使用nginx做代理，由于nginx反向代理的问题，所以导致获取出来的ip都是::ffff:127.0.0.1
+
+#### 配置Nginx
+
+```bash
+location / {
+　　proxy_set_header Host $http_host;
+　　proxy_set_header X-Real-IP $remote_addr;
+　　proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+　　proxy_pass http://127.0.0.1:8360/;
+}
+```
+
+#### 通过node获取ip
+
+```bash
+const ip =  req.headers['x-forwarded-for'] 　||　req.headers['x-real-ip']
+```
+
+<http://api.map.baidu.com/location/ip?ak=6SzbKrxC5vwupOECpO4AhL8sPDyWf2Xa&ip=222.128.5.203&coor=gcj02>
