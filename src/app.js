@@ -12,6 +12,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 require("./home")(app, models)
+require("./home/visitors")(app, models)
 require("./selfManagement")(app, models)
 
 app.use((err, req, res, next) => {

@@ -32,6 +32,12 @@
 }
 ```
 
+## 2022年6月21日
+
+获取访问用户的ip信息，访问次数
+`npx sequelize model:generate --name visitor --attributes ip:string,address_detail:string,point:string,count:integer`
+`npx sequelize db:migrate`
+
 ## 问题
 
 ### nodejs+nginx获取真实ip,解决获取ip为127.0.0.1的问题

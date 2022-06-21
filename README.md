@@ -45,4 +45,6 @@ ORM（Object Relational Mapping）
 `pm2 list`
 `pm2 restart 0`
 
+`pm2 restart 服务名称`
+
 ### self-management项目开发
